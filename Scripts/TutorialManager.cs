@@ -1,5 +1,4 @@
-﻿using LitJson;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +20,7 @@ public class TutorialManager : MonoBehaviour
 
         if (!string.IsNullOrEmpty(textData))
         {
-            data = JsonMapper.ToObject<TutorialProgress>(textData);
+            data = JsonUtility.FromJson<TutorialProgress>(textData);
         }
         else
         {
@@ -40,7 +39,7 @@ public class TutorialManager : MonoBehaviour
 
     public static void Save()
     {
-        var textData = JsonMapper.ToJson(data);
+        var textData = JsonUtility.ToJson(data);
 
         PlayerPrefs.SetString("TUTORIAL_PROGRESS", textData);
         PlayerPrefs.Save();
