@@ -1,0 +1,11 @@
+{
+    "name": "com.omnilatent.tutorialmanager",
+    "displayName": "Omni Tutorial Manager",
+    "version": "0.1.0",
+    "unity": "2018.1",
+    "description": "Manager tutorial progress save and callback",
+    "keywords": ["tutorial"],
+    "category": "Script",
+    "dependencies": {
+    }
+}
