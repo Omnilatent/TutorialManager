@@ -23,7 +23,7 @@ public class TutorialManager : MonoBehaviour
 
         if (!string.IsNullOrEmpty(textData))
         {
-            data = JsonUtility.FromJson<TutorialProgress>(textData);
+            data = LitJson.JsonMapper.ToObject<TutorialProgress>(textData);
         }
         else
         {
@@ -42,7 +42,7 @@ public class TutorialManager : MonoBehaviour
 
     public static void Save()
     {
-        var textData = JsonUtility.ToJson(data);
+        var textData = LitJson.JsonMapper.ToJson(data);
 
         PlayerPrefs.SetString("TUTORIAL_PROGRESS", textData);
         PlayerPrefs.Save();
