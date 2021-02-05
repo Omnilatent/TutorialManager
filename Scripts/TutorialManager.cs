@@ -9,6 +9,9 @@ public class TutorialManager : MonoBehaviour
     public static TutorialProgress data;
     public static Dictionary<string, int> cacheHasSeenTutorial = new Dictionary<string, int>();
 
+    public delegate void OnCompleteTutorialDelegate(TutorialData tutorialData);
+    public static OnCompleteTutorialDelegate onCompleteTutorial;
+
     static TutorialManager()
     {
         Load();
@@ -107,6 +110,7 @@ public class TutorialManager : MonoBehaviour
 
             if (tutData.saveOnDone) TutorialManager.Save();
             isShowing = false;
+            onCompleteTutorial?.Invoke(tutData);
             FirebaseManager.LogEvent($"Tutorial_Done_{tutData.Id}");
         }
     }
